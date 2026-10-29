@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minions | Bubble Sort Visualizer</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🍌</span>
+      <div>
+        <h1>MINION SORT LAB</h1>
+        <p>Learning algorithms, one banana at a time.</p>
+      </div>
+    </div>
+    <span class="status"><span class="status-dot"></span> INTERACTIVE LAB</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">ALGORITHM VISUALIZER / 01</div>
+      <h2>Bubble <span>Sort.</span></h2>
+      <p class="hero-description">
+        Watch our little helpers compare numbers, swap places,
+        and put everything in the right order.
+      </p>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <span class="stat-label">COMPARISONS</span>
+        <strong id="comparisons">0</strong>
+        <span class="stat-note">Pairs examined</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">SWAPS</span>
+        <strong id="swaps">0</strong>
+        <span class="stat-note">Positions changed</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">PASSES</span>
+        <strong id="passes">0</strong>
+        <span class="stat-note">Rounds completed</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">STATUS</span>
+        <strong id="sortStatus" class="status-value">Ready</strong>
+        <span class="stat-note">Algorithm state</span>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <div class="panel visual-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">LIVE PLAYGROUND</span>
+            <h3>The Minion Parade</h3>
+          </div>
+          <span class="live-badge">● LIVE</span>
+        </div>
+
+        <div class="array-toolbar">
+          <span>ARRAY VALUES</span>
+          <span id="arrayLabel">8 MINIONS</span>
+        </div>
+
+        <div id="visualizer" class="visualizer" aria-label="Sorting animation">
+          <!-- JavaScript will create the Minions here. -->
+        </div>
+
+        <div id="message" class="message" aria-live="polite">
+          Ready to sort! Press Start Sorting.
+        </div>
+
+        <div class="controls">
+          <button id="startBtn" class="btn btn-primary">▶ Start Sorting</button>
+          <button id="stepBtn" class="btn btn-secondary">⏭ Next Step</button>
+          <button id="pauseBtn" class="btn btn-secondary">Ⅱ Pause</button>
+          <button id="resetBtn" class="btn btn-secondary">↻ Reset</button>
+        </div>
+
+        <div class="settings">
+          <div class="setting-row">
+            <label for="speed">Animation speed</label>
+            <input id="speed" type="range" min="1" max="5" value="3">
+            <span id="speedLabel">Normal</span>
+          </div>
+
+          <div class="setting-row">
+            <label for="customArray">Your numbers</label>
+            <input
+              id="customArray"
+              type="text"
+              placeholder="e.g. 8, 3, 6, 1, 5"
+            >
+            <button id="applyBtn" class="btn btn-small">Apply</button>
+          </div>
+
+          <button id="randomBtn" class="text-button">
+            🎲 Generate random numbers
+          </button>
+        </div>
+      </div>
+
+      <aside class="side-column">
+        <section class="panel explanation-panel">
+          <span class="section-kicker">WHAT'S HAPPENING?</span>
+          <h3>Sorting Guide</h3>
+
+          <div class="legend">
+            <div><span class="legend-dot dot-compare"></span> Comparing</div>
+            <div><span class="legend-dot dot-swap"></span> Swapping</div>
+            <div><span class="legend-dot dot-sorted"></span> Sorted</div>
+          </div>
+
+          <div class="explanation-box">
+            <span class="section-kicker">CURRENT ACTION</span>
+            <p id="actionText">Waiting for the first comparison.</p>
+          </div>
+
+          <div class="comparison-box">
+            <div>
+              <span class="mini-label">LEFT VALUE</span>
+              <strong id="leftValue">—</strong>
+            </div>
+            <span class="comparison-symbol">?</span>
+            <div>
+              <span class="mini-label">RIGHT VALUE</span>
+              <strong id="rightValue">—</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel code-panel">
+          <div class="panel-heading">
+            <div>
+              <span class="section-kicker">UNDER THE HOOD</span>
+              <h3>Bubble Sort Logic</h3>
+            </div>
+            <span class="code-tag">JS</span>
+          </div>
+
+          <pre><code>for (let i = 0; i &lt; n; i++) {
+  for (let j = 0; j &lt; n-i-1; j++) {
+    if (arr[j] &gt; arr[j+1]) {
+      swap(arr[j], arr[j+1]);
+    }
+  }
+}</code></pre>
+
+          <p class="code-caption">
+            Compare neighboring values. Swap them when the left
+            value is larger. Repeat until sorted.
+          </p>
+        </section>
+
+        <section class="complexity-card">
+          <span class="section-kicker">ALGORITHM FACTS</span>
+          <div class="fact-row">
+            <span>Average time</span><strong>O(n²)</strong>
+          </div>
+          <div class="fact-row">
+            <span>Worst-case time</span><strong>O(n²)</strong>
+          </div>
+          <div class="fact-row">
+            <span>Extra space</span><strong>O(1)</strong>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <footer>
+      <span>🍌 MINION SORT LAB</span>
+      <span>Built for curious minds · Learn by watching</span>
+    </footer>
+  </main>
+</body>
+</html>
+
